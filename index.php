@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PROJETO PW III</title>
+		<title>Cadastro de Bebidas.</title>
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<!-- Bootstrap -->
@@ -20,8 +19,8 @@
 				<div class="row">
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
-							<h1>selecione o item</h1>
-							<p>Um pequeno e simples site criado em PHP,ultilizando Programação Orientada a Objetos (POO),para cadastro de produtos &#128521</p>
+							<h1>Selecione o item.</h1>
+							<p>Site criado em PHP, ultilizando POO, para cadastro de bebidas &#128521</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-pull-7">
@@ -55,11 +54,8 @@
 												case 3:
 													header("Location: indexVinho.php");
 													break;
-
 											}
-										
 										}
-									
 									?>
 								</div>
 							</form>

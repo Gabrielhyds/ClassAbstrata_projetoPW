@@ -1,14 +1,10 @@
-<?php
-	require_once("/xampp/htdocs/Gabriel_silva/ClassRefrigerante/Refrigerante.php");
-	require_once("/xampp/htdocs/Gabriel_silva/AbstractClass/Bebida.php");
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PROJETO PW III</title>
+	<title>Cadastro de Refrigerante.</title>
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<!-- Bootstrap -->
@@ -24,32 +20,32 @@
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
 							<h1>REFRIGERANTE</h1>
-							<p>Um pequeno e simples site criado em PHP,ultilizando Programação Orientada a Objetos (POO),para cadastro de refrigerante,então aproveite e venha cadastrar o seu &#128521</p>
+							<p>Site criado em PHP, ultilizando POO, para cadastro de refrigerantes &#129380</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-pull-7">
 						<div class="booking-form">
 							<form method="post">
 								<div class="form-group">
-									<span class="form-label">Nome do refrigerante</span>
-									<input class="form-control" type="text" name="nome" placeholder="Digite o nome do refrigerante">
+									<span class="form-label">Nome do Refrigerante</span>
+									<input class="form-control" type="text" name="nome" placeholder="Digite o nome do Refrigerante">
 								</div>
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
                                         <span class="form-label">Preço</span>
-									<input class="form-control" type="number" name="preco" placeholder="preço">
+									<input class="form-control" type="number" name="preco" placeholder="Preço">
 								</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-                                        <span class="form-label">Retornavel</span>
-									<input class="form-control" type="text" name="retornavel" placeholder="Retornavel">
+                                        <span class="form-label">Retornável</span>
+									<input class="form-control" type="text" name="retornavel" placeholder="Retornável">
 								</div>
 									</div>
 								</div>
 								<div class="col-sm-6">
-									<input type="submit" name="btn" value="Cadastrar" class="submit-btn" style="text-align:center;background-color:green">
+									<input type="submit" name="btn" value="Cadastrar" class="submit-btn" style="text-align:center;background-color:black">
 								</div>
 								<div>
 									<input type="submit" name="btnVoltar" value="Voltar" class="submit-btn" style="text-align:center;background-color:red;">
@@ -57,18 +53,31 @@
 								</div>
 								<div>
 									<?php
-										$cad = new Refrigerante();
-										if(isset($_POST['btnVoltar'])){
+										require_once("ClasseRefrigerante/Refrigerante.php");
+										require_once("AbstractClass/Bebida.php");
+
+										$novoRefrigerante = new Refrigerante();
+										
+										if(isset($_POST['btnVoltar']))
 											header('Location:index.php');
-										}else if(isset($_POST['btn'])){   
-											if($_POST['nome'] == "" ||  $_POST['preco'] == ""  || $_POST['retornavel'] == ""  ){   
-												echo  "<br/><span style='color:red;'><b>PREENCHA OS CAMPOS CORRETAMENTE!</b></span>";
-											}else{
-												$cad->setNome($_POST['nome'])."<br/>";
-												$cad->setPreco($_POST['preco'])."<br/>";
-                                                $cad->setRetornavel($_POST['retornavel'])."<br/>";
-												$result1 = $cad->mostrarBebida();
-												$result2 = $cad->verificaPreco($_POST['preco']);
+										else if(isset($_POST['btn']))
+										{   
+											if($_POST['nome'] == "" ||  $_POST['preco'] == ""  || $_POST['retornavel'] == "" )   
+												echo  "<br/><span style='color:red;'><b>
+																PREENCHA OS CAMPOS CORRETAMENTE!</b>
+															</span>";
+											else
+											{
+												// Setando valores no objeto refrigerante.
+												$novoRefrigerante->setNome($_POST['nome'])."<br/>";
+												$novoRefrigerante->setPreco($_POST['preco'])."<br/>";
+                                                $novoRefrigerante->setRetornavel($_POST['retornavel'])."<br/>";
+												
+												// Invocando os métodos.
+												$result1 = $novoRefrigerante->mostrarBebida();
+												$result2 = $novoRefrigerante->verificarPreco($_POST['preco']);
+												
+												// Imprimir na tela.
 												echo $result1.$result2;
 											}
 										}

@@ -1,14 +1,10 @@
-<?php
-	require_once("/xampp/htdocs/Gabriel_silva/ClassVinho/Vinho.php");
-	require_once("/xampp/htdocs/Gabriel_silva/AbstractClass/Bebida.php");
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PROJETO PW III</title>
+	<title>Cadastro de Vinho.</title>
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<!-- Bootstrap -->
@@ -24,7 +20,7 @@
 					<div class="col-md-7 col-md-push-5">
 						<div class="booking-cta">
 							<h1>VINHO</h1><!--tag cabeçalho-->
-							<p>Um pequeno e simples site criado em PHP,ultilizando Programação Orientada a Objetos (POO),para cadastro de vinho,então aproveite e venha cadastrar o seu &#128521</p><!--Paragrafo-->
+							<p>Site criado em PHP, ultilizando POO, para cadastro de vinho &#127863</p><!--Paragrafo-->
 						</div><!--div class='booking-cta' -->
 					</div><!--div class='col-md-7 col-md-push-5'-->
 					<div class="col-md-4 col-md-pull-7">
@@ -54,7 +50,7 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="form-btn">
-										<input type="submit" name="btn" value="Cadastrar" class="submit-btn" style="text-align:center;background-color:green;"><!--Input type='subtmit' CADASTRAR-->
+										<input type="submit" name="btn" value="Cadastrar" class="submit-btn" style="text-align:center;background-color:wine;"><!--Input type='subtmit' novoVinhoASTRAR-->
 									</div><!--div form-group-->
 								</div><!--div col-sm-6 -->
 								<div>
@@ -62,31 +58,33 @@
 								</div><br><!--div input[button]-->
 								<div>
 									<?php
-										//	Instância do objeto vinho();
-										$cad = new Vinho();
-										// if para verficiar se o botão "btnVoltar" foi acionado;
-										if(isset($_POST['btnVoltar'])){
-											//se caso o btnVoltar for precionado redirecionará para a pagina principal "index.php";
+										require_once("ClasseVinho/Vinho.php");
+										require_once("AbstractClass/Bebida.php");
+
+										$novoVinho = new Vinho();
+										
+										if(isset($_POST['btnVoltar']))
 											header('Location:index.php');
-										}
-										//Senão vefica se o "btn" foi acionado 
-										else if(isset($_POST['btn'])){   
-											//entrando no elseif ele testará se os campos estão vazios;
-											if($_POST['nome'] == "" || $_POST['tipo'] == "" || $_POST['preco'] == ""  || $_POST['safra'] == ""){   
-												// se sim exibirá uma mensagem informando para corrigir os campos;
-												echo "<br/><span style='color:red;'><b>PREENCHA OS CAMPOS CORRETAMENTE!</b></span>";
-											//se os campos não estiverem em branco entra no else;
-											}else{
-												//sets do objeto Vinho() e Bebida();
-												//repare q está passando por Parâmetros o post de cada campo digitado; 
-												$cad->setNome($_POST['nome'])."<br/>";
-												$cad->setTipo($_POST['tipo'])."<br/>";
-												$cad->setPreco($_POST['preco'])."<br/>";
-												$cad->setSafra( $_POST['safra'])."<br/>";
-												// aqui está chamando os metodos;	
-												$result1 = $cad->mostrarBebida();
-												$result2 = $cad->verificaPreco($_POST['preco']);
-												//exibindo a resultado na tela;
+										else if(isset($_POST['btn']))
+										{   
+											
+											if($_POST['nome'] == "" || $_POST['tipo'] == "" || $_POST['preco'] == ""  || $_POST['safra'] == "")   
+												echo "<br/><span style='color:red;'><b>
+															PREENCHA OS CAMPOS CORRETAMENTE!</b>
+														</span>";
+											else
+											{
+												// Setando  valores no objeto Vinho. 
+												$novoVinho->setNome($_POST['nome'])."<br/>";
+												$novoVinho->setTipo($_POST['tipo'])."<br/>";
+												$novoVinho->setPreco($_POST['preco'])."<br/>";
+												$novoVinho->setSafra( $_POST['safra'])."<br/>";
+												
+												// Invocando os métodos.
+												$result1 = $novoVinho->mostrarBebida();
+												$result2 = $novoVinho->verificarPreco($_POST['preco']);
+												
+												// Imprimir na tela.
 												echo $result1.$result2;
 											}
 										}
