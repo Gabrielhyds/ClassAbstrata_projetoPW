@@ -40,10 +40,17 @@
 									<div class="col-sm-6">
 										<div class="form-group">
                                         <span class="form-label">Retornável</span>
-									<input class="form-control" type="text" name="retornavel" placeholder="Retornável">
-								</div>
+											<div>
+												<input type="checkbox" name="retornavel" value="Sim" checked>
+												<label for="scales">Sim</label>
+											</div>
+
+											<div>
+												<input type="checkbox" name="retornavel" value="Não">
+												<label for="horns">Não</label>
+											</div>
+										</div>
 									</div>
-								</div>
 								<div class="col-sm-6">
 									<input type="submit" name="btn" value="Cadastrar" class="submit-btn" style="text-align:center;background-color:black">
 								</div>
