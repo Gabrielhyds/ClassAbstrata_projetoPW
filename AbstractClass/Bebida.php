@@ -1,23 +1,33 @@
 <?php
-
-    abstract class Bebida{
+    abstract class Bebida
+    {
         private $nome;
         private $preco;
-
-        public function setNome($nome){
-            $this->nome = $nome;
-        }
-        public function getNome(){
+        
+        // Usamos get para obter informações. Esse tipo de método sempre retorna um valor.
+        public function getNome()
+        {
             return $this->nome;
         }
-        public function setPreco($preco){
-            $this->preco = $preco;
-        }
-        public function getPreco(){
+        
+        public function getPreco()
+        {
             return $this->preco;
         }
+        
+        // Usamos set para definir valores. Esse tipo de método geralmente não retorna valores.
+        public function setNome($nome)
+        {
+            $this->nome =$nome;
+        }
 
-        abstract public function mostrarBebida();
-        abstract public function verificaPreco($preco);
+        public function setPreco($preco)
+        {
+            $this->preco = $preco;
+        }
+
+        //Métodos abstratos.
+        abstract function mostrarBebida();       
+        abstract function verificarPreco($preco);
     }
 ?>
